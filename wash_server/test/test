@@ -1,0 +1,7 @@
+#!/bin/bash
+
+while [ true ]
+do
+curl http://fuckand.go.ro:9066/api/wash_vendor_list &> /dev/null 
+done
+
