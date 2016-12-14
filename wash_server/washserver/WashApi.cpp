@@ -60,7 +60,6 @@ void WashApi::Login(const Net::Rest::Request &request, Net::Http::ResponseWriter
     }
 
     QString token = authManager->AuthenticateUser(userId, username);
-    response.headers().add<WashServer::AccessControlHeader>("*");
     response.send(Net::Http::Code::Ok, token.toStdString(), MIME(Application, Plain));
     WASHAPI_LOG_REQUEST_OUT << "OK (username:" << username << ", token:" << token << ")";
 }

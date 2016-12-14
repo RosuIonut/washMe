@@ -16,6 +16,8 @@
 #define WASHSERVER_DEFAULT_THREADS      16
 #define WASHDB_DEFAULT_PORT             3306
 #define WASHDB_DRIVER                   "QMYSQL3"
+#define WASHDB_USERNAME                 "washslave"
+#define WASHDB_PASSWORD                 "pass1qaz"
 
 class WashApi;
 

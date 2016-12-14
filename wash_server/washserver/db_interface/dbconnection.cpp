@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QSqlError>
 #include <QThread>
+#include "WashServer.h"
 
 
 dbConnection* dbConnection::pInstance = NULL;
@@ -23,13 +24,13 @@ QSqlDatabase& dbConnection::getConnection()
     if(!dbStorage.hasLocalData())
     {
         QString connectionName = QString("WASHME_SQL_CONN_0x") + QString::number((uint64_t)QThread::currentThreadId(), 16);
-        dbStorage.setLocalData(QSqlDatabase::addDatabase("QMYSQL3", connectionName));
+        dbStorage.setLocalData(QSqlDatabase::addDatabase(WASHDB_DRIVER, connectionName));
         auto& db = dbStorage.localData();
 
         db.setHostName("localhost");
-        db.setPort(3306);
-        db.setUserName("washslave");
-        db.setPassword("pass1qaz");
+        db.setPort(WASHDB_DEFAULT_PORT);
+        db.setUserName(WASHDB_USERNAME);
+        db.setPassword(WASHDB_PASSWORD);
     }
 
     auto& db = dbStorage.localData();
