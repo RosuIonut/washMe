@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `wash_me` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `wash_me`;
--- MySQL dump 10.13  Distrib 5.5.53, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.16, for Linux (x86_64)
 --
 -- Host: localhost    Database: wash_me
 -- ------------------------------------------------------
--- Server version	5.5.53-0+deb8u1
+-- Server version	5.7.16-0ubuntu0.16.10.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +35,7 @@ CREATE TABLE `wash_vendors` (
   PRIMARY KEY (`idwash_vendors`),
   UNIQUE KEY `name_UNIQUE` (`name`),
   UNIQUE KEY `gpslocation_UNIQUE` (`gpslocation`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +44,7 @@ CREATE TABLE `wash_vendors` (
 
 LOCK TABLES `wash_vendors` WRITE;
 /*!40000 ALTER TABLE `wash_vendors` DISABLE KEYS */;
-INSERT INTO `wash_vendors` VALUES (1,'nova','nova','','all day','555.3322.566',445,'all','123'),(2,'a','anbc','detaliiii','10:00 - 22:00','2355552.2415465',2556,'de toate','123'),(3,'NouaSpalatorie','Nouaparola','','00:00-00:00','GPSLOCATION',23,'de toate',''),(4,'Altaspalatorie','altaparola','','','',0,'','');
+INSERT INTO `wash_vendors` VALUES (1,'Nova','pass','TBD','all day','46.782922, 23.601602',3,'all','3.75'),(2,'Cristal Auto','pass','detalii','07:00 - 22:00','46.764311, 23.559874',2,'all','4.5'),(10,'Tip Top','pass','TBD','08:00 – 20:00','46.777574, 23.609112',1,'TBD','5'),(11,'Auto Mercur','pass','TBD','08:00 – 20:00','46.767963, 23.624604',1,'TBD','5'),(12,'CLEAN CAR S.R.L.','pass','TBD','unknown','46.758564, 23.618412',3,'all','4.12'),(13,'Magic Wash','pass','TBD','08:00 - 22:00','46.771067, 23.630486',4,'all','4.58');
 /*!40000 ALTER TABLE `wash_vendors` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-23 18:16:17
+-- Dump completed on 2016-12-15 10:03:43

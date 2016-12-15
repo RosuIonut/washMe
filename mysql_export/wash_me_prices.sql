@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `wash_me` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `wash_me`;
--- MySQL dump 10.13  Distrib 5.5.53, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.16, for Linux (x86_64)
 --
 -- Host: localhost    Database: wash_me
 -- ------------------------------------------------------
--- Server version	5.5.53-0+deb8u1
+-- Server version	5.7.16-0ubuntu0.16.10.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -55,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-23 18:16:17
+-- Dump completed on 2016-12-15 10:03:43

@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `wash_me` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `wash_me`;
--- MySQL dump 10.13  Distrib 5.5.53, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.16, for Linux (x86_64)
 --
 -- Host: localhost    Database: wash_me
 -- ------------------------------------------------------
--- Server version	5.5.53-0+deb8u1
+-- Server version	5.7.16-0ubuntu0.16.10.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,12 +25,13 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `iduser` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `email` varchar(45) DEFAULT NULL,
+  `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `rating` varchar(5) NOT NULL DEFAULT '00.00',
   PRIMARY KEY (`iduser`),
-  UNIQUE KEY `iduser_UNIQUE` (`iduser`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  UNIQUE KEY `iduser_UNIQUE` (`iduser`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +40,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'12','abcd@yahoo.com','abc','5.55'),(2,'12',NULL,'','0.5'),(3,'a',NULL,'','8.3'),(4,'a',NULL,'','0'),(5,'ion',NULL,'abc','0'),(6,'ionut',NULL,'abc','0'),(7,'iohan','rosuionutvladut@gmail.com','admin','00.00'),(8,'iohan','','admin','00.00');
+INSERT INTO `users` VALUES (7,'iohan','rosuionutvladut@gmail.com','admin','00.00'),(9,'iulian','iulian@mail.com','admin','00.00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-23 18:16:17
+-- Dump completed on 2016-12-15 10:03:43

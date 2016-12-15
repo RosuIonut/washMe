@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `wash_me` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `wash_me`;
--- MySQL dump 10.13  Distrib 5.5.53, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.16, for Linux (x86_64)
 --
 -- Host: localhost    Database: wash_me
 -- ------------------------------------------------------
--- Server version	5.5.53-0+deb8u1
+-- Server version	5.7.16-0ubuntu0.16.10.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -39,7 +37,7 @@ CREATE TABLE `reservs` (
   KEY `fk_reservs_3_idx` (`idemployee`),
   CONSTRAINT `fk_reservs_1` FOREIGN KEY (`idwash_vendor`) REFERENCES `wash_vendors` (`idwash_vendors`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_reservs_2` FOREIGN KEY (`iduser`) REFERENCES `users` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +46,7 @@ CREATE TABLE `reservs` (
 
 LOCK TABLES `reservs` WRITE;
 /*!40000 ALTER TABLE `reservs` DISABLE KEYS */;
-INSERT INTO `reservs` VALUES (3,1,8,2,'interior + exterior','2015-09-11 21:30:00',2,5),(4,1,7,1,'564564','0000-00-00 00:00:00',1,1);
+INSERT INTO `reservs` VALUES (1,1,9,NULL,'interior','2016-12-14 15:30:00',0,NULL),(2,1,9,NULL,'interior','2016-12-14 17:00:00',0,NULL);
 /*!40000 ALTER TABLE `reservs` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -61,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-23 18:16:17
+-- Dump completed on 2016-12-15 10:03:43
