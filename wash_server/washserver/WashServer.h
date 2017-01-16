@@ -43,12 +43,40 @@ public:
         QString token;
     };
 
-    class AccessControlHeader : public Net::Http::Header::Header
+    class AccessControlAllowOrigin : public Net::Http::Header::Header
     {
     public:
         NAME("Access-Control-Allow-Origin")
 
-        AccessControlHeader(const std::string& str) { value = str.c_str(); }
+        AccessControlAllowOrigin(const std::string& str) { value = str.c_str(); }
+        void parse(const std::string& str)  { value = str.c_str(); }
+        void write(std::ostream& os) const  { os << value.toStdString(); }
+        QString Value() const { return value; }
+
+    private:
+        QString value;
+    };
+
+    class AccessControlAllowMethods : public Net::Http::Header::Header
+    {
+    public:
+        NAME("Access-Control-Allow-Methods")
+
+        AccessControlAllowMethods(const std::string& str) { value = str.c_str(); }
+        void parse(const std::string& str)  { value = str.c_str(); }
+        void write(std::ostream& os) const  { os << value.toStdString(); }
+        QString Value() const { return value; }
+
+    private:
+        QString value;
+    };
+
+    class AccessControlAllowHeaders : public Net::Http::Header::Header
+    {
+    public:
+        NAME("Access-Control-Allow-Headers")
+
+        AccessControlAllowHeaders(const std::string& str) { value = str.c_str(); }
         void parse(const std::string& str)  { value = str.c_str(); }
         void write(std::ostream& os) const  { os << value.toStdString(); }
         QString Value() const { return value; }

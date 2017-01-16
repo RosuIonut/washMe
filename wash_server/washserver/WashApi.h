@@ -12,6 +12,8 @@ class WashApi
 public:
     WashApi();
 
+    void AccessControlOptions(const Net::Rest::Request &request, Net::Http::ResponseWriter response);
+
     void Signup(const Net::Rest::Request &request, Net::Http::ResponseWriter response);
     void Login(const Net::Rest::Request &request, Net::Http::ResponseWriter response);
 

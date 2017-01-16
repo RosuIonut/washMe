@@ -8,6 +8,7 @@
 #include "WashServer.h"
 #include "WashApi.h"
 #include <QDebug>
+#include "description.h"
 
 
 WashServer::WashServer(uint16_t port, uint8_t threads) :
@@ -58,6 +59,12 @@ void WashServer::SetupRoutes()
 
     Net::Rest::Routes::Get(router, "/api/employee_list/:vendor_id", Net::Rest::Routes::bind(&WashApi::EmployeeList, washApi));
 
+
+    Net::Rest::Routes::Options(router, "/api/user_details", Net::Rest::Routes::bind(&WashApi::AccessControlOptions, washApi));
+    Net::Rest::Routes::Options(router, "/api/user_reservations", Net::Rest::Routes::bind(&WashApi::AccessControlOptions, washApi));
+    Net::Rest::Routes::Options(router, "/api/add_reservation", Net::Rest::Routes::bind(&WashApi::AccessControlOptions, washApi));
+    Net::Rest::Routes::Options(router, "/api/wash_vendor_list", Net::Rest::Routes::bind(&WashApi::AccessControlOptions, washApi));
+    Net::Rest::Routes::Options(router, "/api/wash_vendor_prices/:vendor_id", Net::Rest::Routes::bind(&WashApi::AccessControlOptions, washApi));
+    Net::Rest::Routes::Options(router, "/api/wash_vendor_reservations/:vendor_id", Net::Rest::Routes::bind(&WashApi::AccessControlOptions, washApi));
+    Net::Rest::Routes::Options(router, "/api/employee_list/:vendor_id", Net::Rest::Routes::bind(&WashApi::AccessControlOptions, washApi));
 }
-
-

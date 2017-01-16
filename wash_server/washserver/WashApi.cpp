@@ -26,6 +26,28 @@ WashApi::WashApi() :
 
 }
 
+void WashApi::AccessControlOptions(const Net::Rest::Request &request, Net::Http::ResponseWriter response)
+{
+    WASHAPI_LOG_REQUEST_IN << "(RESOURCE: " << request.resource().c_str() <<" METHOD: " << (int)request.method() << ")";
+
+//    for(auto header : request.headers().list())
+//    {
+//        std::stringstream stream;
+//        stream << header->name() << ": ";
+//        header->write(stream);
+
+//        qInfo() << "HEADER" << stream.str().c_str();
+//    }
+
+    response.headers().add<WashServer::AccessControlAllowOrigin>("*");
+    response.headers().add<WashServer::AccessControlAllowMethods>("POST, GET, OPTIONS");
+    response.headers().add<WashServer::AccessControlAllowHeaders>("AuthToken, Content-Type");
+
+    response.send(Net::Http::Code::Ok);
+
+    WASHAPI_LOG_REQUEST_OUT;
+}
+
 void WashApi::Login(const Net::Rest::Request &request, Net::Http::ResponseWriter response)
 {
     WASHAPI_LOG_REQUEST_IN << "(BODY: " << request.body().c_str() << ")";
@@ -60,7 +82,9 @@ void WashApi::Login(const Net::Rest::Request &request, Net::Http::ResponseWriter
     }
 
     QString token = authManager->AuthenticateUser(userId, username);
+    response.headers().add<WashServer::AccessControlAllowOrigin>("*");
     response.send(Net::Http::Code::Ok, token.toStdString(), MIME(Application, Plain));
+
     WASHAPI_LOG_REQUEST_OUT << "OK (username:" << username << ", token:" << token << ")";
 }
 
@@ -97,6 +121,7 @@ void WashApi::Signup(const Net::Rest::Request &request, Net::Http::ResponseWrite
         return;
     }
 
+    response.headers().add<WashServer::AccessControlAllowOrigin>("*");
     response.send(Net::Http::Code::Ok);
     WASHAPI_LOG_REQUEST_OUT << "OK (username:" << username << ")";
 }
@@ -116,6 +141,7 @@ void WashApi::UserDetails(const Net::Rest::Request &request, Net::Http::Response
         jsonObject["rating"] = user.rating;
 
         QJsonDocument doc(jsonObject);
+        response.headers().add<WashServer::AccessControlAllowOrigin>("*");
         response.send(Net::Http::Code::Ok, doc.toJson(QJsonDocument::Compact).toStdString(), MIME(Application, Json));
         WASHAPI_LOG_REQUEST_OUT << "OK";
     }
@@ -152,6 +178,7 @@ void WashApi::UserReservations(const Net::Rest::Request &request, Net::Http::Res
         }
 
         QJsonDocument doc(jsonArray);
+        response.headers().add<WashServer::AccessControlAllowOrigin>("*");
         response.send(Net::Http::Code::Ok, doc.toJson(QJsonDocument::Compact).toStdString(), MIME(Application, Json));
         WASHAPI_LOG_REQUEST_OUT << "OK (items:" << jsonArray.count() << ")";
     }
@@ -196,6 +223,7 @@ void WashApi::AddReservation(const Net::Rest::Request &request, Net::Http::Respo
         return;
     }
 
+    response.headers().add<WashServer::AccessControlAllowOrigin>("*");
     response.send(Net::Http::Code::Ok);
     WASHAPI_LOG_REQUEST_OUT << "OK";
 }
@@ -227,6 +255,7 @@ void WashApi::WashVendorList(const Net::Rest::Request &request, Net::Http::Respo
         }
 
         QJsonDocument doc(jsonArray);
+        response.headers().add<WashServer::AccessControlAllowOrigin>("*");
         response.send(Net::Http::Code::Ok, doc.toJson(QJsonDocument::Compact).toStdString(), MIME(Application, Json));
         WASHAPI_LOG_REQUEST_OUT << "OK (items:" << jsonArray.count() << ")";
     }
@@ -261,6 +290,7 @@ void WashApi::WashVendorPrices(const Net::Rest::Request &request, Net::Http::Res
         }
 
         QJsonDocument doc(jsonArray);
+        response.headers().add<WashServer::AccessControlAllowOrigin>("*");
         response.send(Net::Http::Code::Ok, doc.toJson(QJsonDocument::Compact).toStdString(), MIME(Application, Json));
         WASHAPI_LOG_REQUEST_OUT << "OK (items:" << jsonArray.count() << ")";
     }
@@ -296,6 +326,7 @@ void WashApi::WashVendorReservations(const Net::Rest::Request &request, Net::Htt
         }
 
         QJsonDocument doc(jsonArray);
+        response.headers().add<WashServer::AccessControlAllowOrigin>("*");
         response.send(Net::Http::Code::Ok, doc.toJson(QJsonDocument::Compact).toStdString(), MIME(Application, Json));
         WASHAPI_LOG_REQUEST_OUT << "OK (items:" << jsonArray.count() << ")";
     }
@@ -331,6 +362,7 @@ void WashApi::EmployeeList(const Net::Rest::Request &request, Net::Http::Respons
         }
 
         QJsonDocument doc(jsonArray);
+        response.headers().add<WashServer::AccessControlAllowOrigin>("*");
         response.send(Net::Http::Code::Ok, doc.toJson(QJsonDocument::Compact).toStdString(), MIME(Application, Json));
         WASHAPI_LOG_REQUEST_OUT << "OK (items:" << jsonArray.count() << ")";
     }
